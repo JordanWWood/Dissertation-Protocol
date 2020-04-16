@@ -109,19 +109,19 @@ namespace me.jordanwood.proto.v1.bridge {
     static readonly grpc::Marshaller<global::me.jordanwood.proto.v1.bridge.DataStream> __Marshaller_v1_proto_bridge_DataStream = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::me.jordanwood.proto.v1.bridge.DataStream.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::me.jordanwood.proto.v1.bridge.Token> __Marshaller_v1_proto_bridge_Token = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::me.jordanwood.proto.v1.bridge.Token.Parser.ParseFrom);
 
-    static readonly grpc::Method<global::me.jordanwood.proto.v1.bridge.DataStream, global::me.jordanwood.proto.v1.bridge.DataStream> __Method_Connect = new grpc::Method<global::me.jordanwood.proto.v1.bridge.DataStream, global::me.jordanwood.proto.v1.bridge.DataStream>(
-        grpc::MethodType.DuplexStreaming,
+    static readonly grpc::Method<global::me.jordanwood.proto.v1.bridge.DataStream, global::me.jordanwood.proto.v1.bridge.Token> __Method_SendStream = new grpc::Method<global::me.jordanwood.proto.v1.bridge.DataStream, global::me.jordanwood.proto.v1.bridge.Token>(
+        grpc::MethodType.ClientStreaming,
         __ServiceName,
-        "Connect",
+        "SendStream",
         __Marshaller_v1_proto_bridge_DataStream,
-        __Marshaller_v1_proto_bridge_DataStream);
-
-    static readonly grpc::Method<global::me.jordanwood.proto.v1.bridge.Token, global::me.jordanwood.proto.v1.bridge.Token> __Method_Disconnect = new grpc::Method<global::me.jordanwood.proto.v1.bridge.Token, global::me.jordanwood.proto.v1.bridge.Token>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "Disconnect",
-        __Marshaller_v1_proto_bridge_Token,
         __Marshaller_v1_proto_bridge_Token);
+
+    static readonly grpc::Method<global::me.jordanwood.proto.v1.bridge.Token, global::me.jordanwood.proto.v1.bridge.DataStream> __Method_ReceiveStream = new grpc::Method<global::me.jordanwood.proto.v1.bridge.Token, global::me.jordanwood.proto.v1.bridge.DataStream>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "ReceiveStream",
+        __Marshaller_v1_proto_bridge_Token,
+        __Marshaller_v1_proto_bridge_DataStream);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -132,12 +132,12 @@ namespace me.jordanwood.proto.v1.bridge {
     /// <summary>Base class for server-side implementations of Data</summary>
     public abstract partial class DataBase
     {
-      public virtual global::System.Threading.Tasks.Task Connect(grpc::IAsyncStreamReader<global::me.jordanwood.proto.v1.bridge.DataStream> requestStream, grpc::IServerStreamWriter<global::me.jordanwood.proto.v1.bridge.DataStream> responseStream, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::me.jordanwood.proto.v1.bridge.Token> SendStream(grpc::IAsyncStreamReader<global::me.jordanwood.proto.v1.bridge.DataStream> requestStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task<global::me.jordanwood.proto.v1.bridge.Token> Disconnect(global::me.jordanwood.proto.v1.bridge.Token request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task ReceiveStream(global::me.jordanwood.proto.v1.bridge.Token request, grpc::IServerStreamWriter<global::me.jordanwood.proto.v1.bridge.DataStream> responseStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -167,29 +167,21 @@ namespace me.jordanwood.proto.v1.bridge {
       {
       }
 
-      public virtual grpc::AsyncDuplexStreamingCall<global::me.jordanwood.proto.v1.bridge.DataStream, global::me.jordanwood.proto.v1.bridge.DataStream> Connect(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncClientStreamingCall<global::me.jordanwood.proto.v1.bridge.DataStream, global::me.jordanwood.proto.v1.bridge.Token> SendStream(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return Connect(new grpc::CallOptions(headers, deadline, cancellationToken));
+        return SendStream(new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual grpc::AsyncDuplexStreamingCall<global::me.jordanwood.proto.v1.bridge.DataStream, global::me.jordanwood.proto.v1.bridge.DataStream> Connect(grpc::CallOptions options)
+      public virtual grpc::AsyncClientStreamingCall<global::me.jordanwood.proto.v1.bridge.DataStream, global::me.jordanwood.proto.v1.bridge.Token> SendStream(grpc::CallOptions options)
       {
-        return CallInvoker.AsyncDuplexStreamingCall(__Method_Connect, null, options);
+        return CallInvoker.AsyncClientStreamingCall(__Method_SendStream, null, options);
       }
-      public virtual global::me.jordanwood.proto.v1.bridge.Token Disconnect(global::me.jordanwood.proto.v1.bridge.Token request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncServerStreamingCall<global::me.jordanwood.proto.v1.bridge.DataStream> ReceiveStream(global::me.jordanwood.proto.v1.bridge.Token request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return Disconnect(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return ReceiveStream(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::me.jordanwood.proto.v1.bridge.Token Disconnect(global::me.jordanwood.proto.v1.bridge.Token request, grpc::CallOptions options)
+      public virtual grpc::AsyncServerStreamingCall<global::me.jordanwood.proto.v1.bridge.DataStream> ReceiveStream(global::me.jordanwood.proto.v1.bridge.Token request, grpc::CallOptions options)
       {
-        return CallInvoker.BlockingUnaryCall(__Method_Disconnect, null, options, request);
-      }
-      public virtual grpc::AsyncUnaryCall<global::me.jordanwood.proto.v1.bridge.Token> DisconnectAsync(global::me.jordanwood.proto.v1.bridge.Token request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return DisconnectAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      public virtual grpc::AsyncUnaryCall<global::me.jordanwood.proto.v1.bridge.Token> DisconnectAsync(global::me.jordanwood.proto.v1.bridge.Token request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_Disconnect, null, options, request);
+        return CallInvoker.AsyncServerStreamingCall(__Method_ReceiveStream, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override DataClient NewInstance(ClientBaseConfiguration configuration)
@@ -203,8 +195,8 @@ namespace me.jordanwood.proto.v1.bridge {
     public static grpc::ServerServiceDefinition BindService(DataBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_Connect, serviceImpl.Connect)
-          .AddMethod(__Method_Disconnect, serviceImpl.Disconnect).Build();
+          .AddMethod(__Method_SendStream, serviceImpl.SendStream)
+          .AddMethod(__Method_ReceiveStream, serviceImpl.ReceiveStream).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -213,8 +205,8 @@ namespace me.jordanwood.proto.v1.bridge {
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
     public static void BindService(grpc::ServiceBinderBase serviceBinder, DataBase serviceImpl)
     {
-      serviceBinder.AddMethod(__Method_Connect, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::me.jordanwood.proto.v1.bridge.DataStream, global::me.jordanwood.proto.v1.bridge.DataStream>(serviceImpl.Connect));
-      serviceBinder.AddMethod(__Method_Disconnect, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::me.jordanwood.proto.v1.bridge.Token, global::me.jordanwood.proto.v1.bridge.Token>(serviceImpl.Disconnect));
+      serviceBinder.AddMethod(__Method_SendStream, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::me.jordanwood.proto.v1.bridge.DataStream, global::me.jordanwood.proto.v1.bridge.Token>(serviceImpl.SendStream));
+      serviceBinder.AddMethod(__Method_ReceiveStream, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::me.jordanwood.proto.v1.bridge.Token, global::me.jordanwood.proto.v1.bridge.DataStream>(serviceImpl.ReceiveStream));
     }
 
   }

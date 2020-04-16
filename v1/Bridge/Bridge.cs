@@ -35,11 +35,11 @@ namespace me.jordanwood.proto.v1.bridge {
             "ZWFtLlR5cGUSDAoEZGF0YRgCIAEoCSIoCgRUeXBlEgkKBVRPS0VOEAASCgoG",
             "VVBEQVRFEAESCQoFUVVFUlkQAjJhCglIYW5kc2hha2USVAoHQ29ubmVjdBIi",
             "LnYxLnByb3RvLmJyaWRnZS5Db25uZWN0aW9uUmVxdWVzdBojLnYxLnByb3Rv",
-            "LmJyaWRnZS5Db25uZWN0aW9uUmVzcG9uc2UiADKRAQoERGF0YRJJCgdDb25u",
-            "ZWN0EhsudjEucHJvdG8uYnJpZGdlLkRhdGFTdHJlYW0aGy52MS5wcm90by5i",
-            "cmlkZ2UuRGF0YVN0cmVhbSIAKAEwARI+CgpEaXNjb25uZWN0EhYudjEucHJv",
-            "dG8uYnJpZGdlLlRva2VuGhYudjEucHJvdG8uYnJpZGdlLlRva2VuIgBCIKoC",
-            "HW1lLmpvcmRhbndvb2QucHJvdG8udjEuYnJpZGdlYgZwcm90bzM="));
+            "LmJyaWRnZS5Db25uZWN0aW9uUmVzcG9uc2UiADKXAQoERGF0YRJFCgpTZW5k",
+            "U3RyZWFtEhsudjEucHJvdG8uYnJpZGdlLkRhdGFTdHJlYW0aFi52MS5wcm90",
+            "by5icmlkZ2UuVG9rZW4iACgBEkgKDVJlY2VpdmVTdHJlYW0SFi52MS5wcm90",
+            "by5icmlkZ2UuVG9rZW4aGy52MS5wcm90by5icmlkZ2UuRGF0YVN0cmVhbSIA",
+            "MAFCIKoCHW1lLmpvcmRhbndvb2QucHJvdG8udjEuYnJpZGdlYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
