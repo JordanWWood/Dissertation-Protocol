@@ -1,15 +1,15 @@
 syntax = "proto3";
 
 package v1.proto.bridge;
-option go_package = "../v1/proto/bridge";
+option csharp_namespace = "me.jordanwood.proto.v1.bridge";
 
 service Handshake {
     rpc Connect (ConnectionRequest) returns (ConnectionResponse) {}
 }
 
 service Data {
-    rpc Connect (stream DataStream) returns (stream DataStream) {}
-    rpc Disconnect (Token) returns (Token) {}
+    rpc SendStream (stream DataStream) returns (Token) {}
+	rpc RecieveStream (Token) returns (stream DataStream)
 }
 
 message ConnectionRequest {
@@ -31,5 +31,16 @@ message Token {
 }
 
 message DataStream {
-    repeated string data = 1;
+    repeated Item data = 1;
+
+    enum Type {
+        TOKEN = 0;
+        UPDATE = 1;
+        QUERY = 2;
+    }
+
+    message Item {
+        Type type = 1;
+        string data = 2;
+    }
 }
