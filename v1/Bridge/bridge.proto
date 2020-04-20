@@ -37,6 +37,8 @@ message DataStream {
         TOKEN = 0;
         UPDATE = 1;
         QUERY = 2;
+        AUTHORITY = 3;
+        EXISTENCE = 4;
     }
 
     message Item {

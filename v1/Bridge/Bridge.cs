@@ -29,17 +29,18 @@ namespace me.jordanwood.proto.v1.bridge {
             "aWRnZS5Db25uZWN0aW9uUmVxdWVzdC5UeXBlIi0KBFR5cGUSCgoGV09SS0VS",
             "EAASCgoGQ0xJRU5UEAESDQoJVEVMRU1FVFJZEAIiOwoSQ29ubmVjdGlvblJl",
             "c3BvbnNlEiUKBXRva2VuGAEgASgLMhYudjEucHJvdG8uYnJpZGdlLlRva2Vu",
-            "IhYKBVRva2VuEg0KBXRva2VuGAEgASgJIqwBCgpEYXRhU3RyZWFtEi4KBGRh",
+            "IhYKBVRva2VuEg0KBXRva2VuGAEgASgJIsoBCgpEYXRhU3RyZWFtEi4KBGRh",
             "dGEYASADKAsyIC52MS5wcm90by5icmlkZ2UuRGF0YVN0cmVhbS5JdGVtGkQK",
             "BEl0ZW0SLgoEdHlwZRgBIAEoDjIgLnYxLnByb3RvLmJyaWRnZS5EYXRhU3Ry",
-            "ZWFtLlR5cGUSDAoEZGF0YRgCIAEoCSIoCgRUeXBlEgkKBVRPS0VOEAASCgoG",
-            "VVBEQVRFEAESCQoFUVVFUlkQAjJhCglIYW5kc2hha2USVAoHQ29ubmVjdBIi",
-            "LnYxLnByb3RvLmJyaWRnZS5Db25uZWN0aW9uUmVxdWVzdBojLnYxLnByb3Rv",
-            "LmJyaWRnZS5Db25uZWN0aW9uUmVzcG9uc2UiADKXAQoERGF0YRJFCgpTZW5k",
-            "U3RyZWFtEhsudjEucHJvdG8uYnJpZGdlLkRhdGFTdHJlYW0aFi52MS5wcm90",
-            "by5icmlkZ2UuVG9rZW4iACgBEkgKDVJlY2VpdmVTdHJlYW0SFi52MS5wcm90",
-            "by5icmlkZ2UuVG9rZW4aGy52MS5wcm90by5icmlkZ2UuRGF0YVN0cmVhbSIA",
-            "MAFCIKoCHW1lLmpvcmRhbndvb2QucHJvdG8udjEuYnJpZGdlYgZwcm90bzM="));
+            "ZWFtLlR5cGUSDAoEZGF0YRgCIAEoCSJGCgRUeXBlEgkKBVRPS0VOEAASCgoG",
+            "VVBEQVRFEAESCQoFUVVFUlkQAhINCglBVVRIT1JJVFkQAxINCglFWElTVEVO",
+            "Q0UQBDJhCglIYW5kc2hha2USVAoHQ29ubmVjdBIiLnYxLnByb3RvLmJyaWRn",
+            "ZS5Db25uZWN0aW9uUmVxdWVzdBojLnYxLnByb3RvLmJyaWRnZS5Db25uZWN0",
+            "aW9uUmVzcG9uc2UiADKXAQoERGF0YRJFCgpTZW5kU3RyZWFtEhsudjEucHJv",
+            "dG8uYnJpZGdlLkRhdGFTdHJlYW0aFi52MS5wcm90by5icmlkZ2UuVG9rZW4i",
+            "ACgBEkgKDVJlY2VpdmVTdHJlYW0SFi52MS5wcm90by5icmlkZ2UuVG9rZW4a",
+            "Gy52MS5wcm90by5icmlkZ2UuRGF0YVN0cmVhbSIAMAFCIKoCHW1lLmpvcmRh",
+            "bndvb2QucHJvdG8udjEuYnJpZGdlYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -586,6 +587,8 @@ namespace me.jordanwood.proto.v1.bridge {
         [pbr::OriginalName("TOKEN")] Token = 0,
         [pbr::OriginalName("UPDATE")] Update = 1,
         [pbr::OriginalName("QUERY")] Query = 2,
+        [pbr::OriginalName("AUTHORITY")] Authority = 3,
+        [pbr::OriginalName("EXISTENCE")] Existence = 4,
       }
 
       public sealed partial class Item : pb::IMessage<Item> {
