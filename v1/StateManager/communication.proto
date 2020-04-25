@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package v1.proto.statemanager;
+option csharp_namespace = "me.jordanwood.proto.v1.statemanager";
+
+service State {
+    rpc Connect(InitialConnectionRequest) returns (ConnectionRequest) {} // Client Server
+    rpc FullLoad(ConnectionRequest) returns (PackedState) {} // Client Server
+    rpc UpdateObject(EntityEditRequest) returns (GenericResponse) {} // Client Server
+    rpc CreateObject(EntityEditRequest) returns (GenericResponse) {} // Client Server
+    rpc RemoveObject(EntityRequest) returns (GenericResponse) {} // Do not implement yet
+    rpc RetrieveAuthority(EntityRequest) returns (AuthorityResponse) {} // Do not implement yet
+    rpc RetrieveState(EntityRequest) returns (EntityState) {} // Do not implement yet
+    rpc StateStream(ConnectionRequest) returns (stream EntityState) {} // Client Server
+    rpc SubscriptionStream(ConnectionRequest) returns (stream ConnectionRequest) {} // Client Server
+}
+
+message GenericResponse {
+    bool successful = 1;
+    string error = 2;
+}
+
+message EntityEditRequest {
+    string EntityId = 1;
+    string Token = 2;
+    EntityState state = 3;
+}
+
+message EntityRequest {
+    string EntityId = 1;
+    string Token = 2;
+}
+
+message ConnectionRequest {
+    string Token = 1;
+    Type type = 2;
+}
+
+message InitialConnectionRequest {
+    Type type = 2;
+}
+
+message AuthorityResponse {
+    string AuthoritativeMember = 1;
+}
+
+message EntityState {
+    string Id = 1;
+    string PrefabName = 2;
+    repeated Member members = 3;
+}
+
+message Member {
+    string MemberName = 1;
+    string MemberType = 2;
+    string Data = 3;
+    string AuthoritativeMember = 4;
+}
+
+message PackedState {
+    repeated EntityState state = 1;
+}
+
+enum Type {
+    WORKER = 0;
+    CLIENT = 1;
+    TELEMETRY = 2;
+}
